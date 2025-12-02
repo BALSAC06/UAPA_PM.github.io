@@ -14,6 +14,7 @@
         background-color: #003b5c;
         color:#222;
         line-height:1.6;
+        background-image: url('Imagenes/fondo.gif');
     }
     header{
         background-image: url('Imagenes/manufactura-aditiva.jpg');
@@ -31,6 +32,43 @@
         margin:auto;
         padding:20px 0;
     }
+
+    /* -------------------- MENÚ DERECHA -------------------- */
+        nav.menu {
+            display: flex;
+            justify-content: flex-end;
+            gap: 40px;
+            padding: 20px 40px;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav.menu a {
+            text-decoration: none;
+            color: var(--gris-texto);
+            padding: 10px 15px;
+            font-size: 18px;
+            font-weight: 400;
+            position: relative;
+            transition: 0.2s ease;
+        }
+
+        nav.menu a:hover {
+            background: #f4f4f4;
+        }
+
+        nav.menu a.activo::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            height: 3px;
+            background: var(--rojo-linea);
+        }
+
 
     /* INDICE */
     .indice{
@@ -174,11 +212,19 @@
     <p>Departamento de Diseño y Manufactura</p>
 </header>
 
+<nav class="menu">
+        <a href="#Indice" class="activo">Índice</a>
+        <a href="#intro">Introducción</a>
+        <a href="#proceso">Contenido</a>
+        <a href="#cuestionario">Actividades</a>
+        <a href="#fuentes">Fuentes</a>
+    </nav>
+
 <div class="container">
 
 <!-- INDICE -->
 <div class="indice">
-    <h2>Contenido</h2>
+    <h2 id="Indice">Indice</h2>
     <a href="#intro">1. Introducción</a>
     <a href="#proceso">2. Proceso general</a>
     <a href="#Concepto y Clasificación de la Manufactura Aditiva">3. Concepto y Clasificación de la Manufactura Aditiva</a>
@@ -274,8 +320,8 @@
 <!-- TABLA -->
 <div class="indice">  
     <h2 id="ventajas">6. Ventajas y Limitaciones</h2>
-    <p> Como veremos más adelante, la manufactura aditiva ofrece múltiples ventajas, las cuales suponen una gran puerta de oportunidades para usarla como herramienta para la ingeniería.</p>
-    <p>Por el momento las cosas no son tan ideales como aparentan, pues como todo proceso, también tiene una serie de limitaciones, en la siguiente tabla se mencionan algunas a considerar: </p>
+    <p> Como veremos más adelante, existen actualmente una multitud de tecnologías de fabricación aditiva, si bien es posible establecer un proceso genérico común a todas ellas, que consta de 6 fases:</p>
+    <p>Puede que a largo plazo así ocurra, pero por el momento las cosas no son tan ideales como aparentan... </p>
 
     <table>
         <tr><th>Ventajas</th><th>Limitaciones</th></tr>
@@ -338,11 +384,9 @@ La impresión 3D en la industria aeroespacial se utiliza en diversas aplicacione
 <div class="indice"> 
     <h2 id="fuentes">10. Fuentes de consulta</h2>
     <ul>
-        <li>Boizas, G. M. (s. f.). Fabricaci�n Aditiva - C�mo y Porqu� de la Impresi�n 3D. http://fabricacionaditiva.online/ </li>
         <li>Groover, M. "Fundamentos de Manufactura Moderna". McGraw-Hill.</li>
         <li>Gibson, Rosen & Stucker. "Additive Manufacturing Technologies". Springer.</li>
         <li>ASTM F2792 – Standard Terminology for Additive Manufacturing</li>
-        
     </ul>
 
     </div>
@@ -503,9 +547,23 @@ function checkOrder(){
         ok ? "¡Correcto! El orden es adecuado." : "Orden incorrecto. Intenta de nuevo.";
 }
 
+const secciones = document.querySelectorAll("section[id]");
+        const links = document.querySelectorAll(".menu a");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute("id");
+                if (entry.isIntersecting) {
+                    links.forEach(link => link.classList.remove("activo"));
+                    const actual = document.querySelector(`.menu a[href="#${id}"]`);
+                    if (actual) actual.classList.add("activo");
+                }
+            });
+        }, {
+            threshold: 0.45
+        });
+        secciones.forEach(sec => observer.observe(sec));
+
 </script>
 
 </body>
 </html>
-
-
