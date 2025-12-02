@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Manufactura Aditiva - UAPA</title>
+
+<!-- Fuente Maryweather -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+    body{
+        font-family: 'Merriweather', serif;
+        margin:0;
+        background-color: #003b5c;
+        color:#222;
+        line-height:1.6;
+    }
+    header{
+        background-image: url('Imagenes/manufactura-aditiva.jpg');
+        background-position: center;
+        color:rgb(4, 255, 247);
+        padding:120px;
+        text-align:center;
+        font-size: 40px;
+    }
+    h1,h2,h3{
+        font-weight:700;
+    }
+    .container{
+        width:85%;
+        margin:auto;
+        padding:20px 0;
+    }
+
+    /* INDICE */
+    .indice{
+        background:#fff;
+        padding:20px;
+        border-radius:10px;
+        box-shadow:0 3px 10px rgba(0,0,0,0.1);
+        margin-bottom:25px;
+    }
+    .indice a{
+        text-decoration:none;
+        color:#003b5c;
+        display:block;
+        margin:8px 0;
+        font-weight:700;
+    }
+
+    /* CAROUSEL */
+    .carousel-box{
+        background:#fff;
+        padding:20px;
+        border-radius:10px;
+        box-shadow:0 3px 10px rgba(0,0,0,0.1);
+        margin-bottom:3px;
+        
+    }
+  .carousel-img{
+    width:100%;
+    height:400px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+    .carousel-controls{
+        display:flex;
+        justify-content:space-between;
+    }
+    .carousel-controls button{
+        padding:10px 20px;
+        background:#003b5c;
+        color:#fff;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+    }
+
+    /* TABLAS */
+    table{
+        width:100%;
+        border-collapse:collapse;
+        margin:20px 0;
+        background:#fff;
+        box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    }
+    th,td{
+        padding:12px;
+        border:1px solid #ddd;
+    }
+    th{
+        background:#003b5c;
+        color:white;
+    }
+
+    /* DESPLEGABLES */
+    details{
+        background:white;
+        padding:15px 20px;
+        margin:20px 0;
+        border-radius:10px;
+        box-shadow:0 3px 10px rgba(0,0,0,0.12);
+        cursor:pointer;
+        transition:0.3s;
+    }
+    details:hover{
+        transform:scale(1.01);
+    }
+    summary{
+        font-weight:700;
+        font-size:18px;
+        color:#003b5c;
+    }
+
+    /* CUESTIONARIO */
+    .question{
+        background:#eef4f9;
+        padding:15px;
+        border-radius:10px;
+        margin-bottom:15px;
+    }
+    .btn-check{
+        background:#003b5c;
+        color:white;
+        padding:10px 20px;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+        margin-top:10px;
+    }
+
+    /* EJERCICIO ORDENAR */
+    #ordenar-container{
+        background:#fff;
+        padding:20px;
+        border-radius:10px;
+        box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    }
+    .draggable{
+        padding:12px;
+        background:#d7e9ff;
+        border:1px solid #aac8ff;
+        border-radius:8px;
+        margin:8px 0;
+        cursor:grab;
+        font-weight:700;
+    }
+    .dropzone{
+        min-height:200px;
+        padding:15px;
+        border:2px dashed #003b5c;
+        border-radius:10px;
+        background:#f1f8ff;
+    }
+    #btn-check-order{
+        margin-top:15px;
+        padding:10px 20px;
+        background:#003b5c;
+        color:white;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+    }
+
+</style>
+</head>
+<body>
+
+<header>
+    
+    <h1>Manufactura Aditiva</h1>
+    <p>Procesos de Manufactura </p>
+    <p>Departamento de Diseño y Manufactura</p>
+</header>
+
+<div class="container">
+
+<!-- INDICE -->
+<div class="indice">
+    <h2>Contenido</h2>
+    <a href="#intro">1. Introducción</a>
+    <a href="#proceso">2. Proceso general</a>
+    <a href="#Concepto y Clasificación de la Manufactura Aditiva">3. Concepto y Clasificación de la Manufactura Aditiva</a>
+    <a href="#Tecnologías Principales">4. Tecnologías Principales</a>
+    <a href="#Materiales Utilizados">5. Materiales Utilizados</a>
+    <a href="#ventajas">6. Ventajas y Limitaciones</a>
+    <a href="#aplicaciones">7. Aplicaciones</a>
+    <a href="#cuestionario">8. Cuestionario interactivo</a>
+    <a href="#ejercicio2">9. Ejercicio de ordenación</a>
+    <a href="#fuentes">10. Fuentes de consulta</a>
+</div>
+
+<!-- INTRO -->
+<div class="indice">
+    <h2 id="intro">1. Introducción</h2>
+    <p>La Fabricación Aditiva o impresión 3D es posiblemente el componente más conocido de la llamada Industria 4.0, la nueva revolución industrial, y sin embargo no todos conocen en qué consiste y el porqué de este nuevo tipo de fabricación. </p>
+    <p>La manufactura aditiva (AM) es un conjunto de procesos que crean piezas mediante la adición controlada de material capa sobre capa. Ha transformado sectores como aeroespacial, médico, automotriz y manufactura de prototipos.</p>
+
+    <p>Llamamos fabricación conformativa (o formativa, según otros autores) a aquella en la que un material es obligado (por presión, a golpes, derritiéndolo o por cualquier otro procedimiento) a adquirir la forma y dimensiones que nos interese. La fabricación sustractiva sería aquella en la que se van eliminando trozos de material (a golpes, lijado, fresado u otro procedimiento) de un bloque compacto inicial hasta conseguir el producto deseado. </p>
+    <p> La moderna impresión 3D consiste precisamente en eso: en ir añadiendo elementos de material de forma muy precisa, asegurando la correcta unión entre los distintos elementos añadidos (por ejemplo, haciendo que el material esté a una temperatura tal que una adecuada fusión entre capas es posible); y todo ello de forma automática, controlada por un ordenador y a partir de un diseño preliminar en 3D.
+
+    Como analogía, vamos a revisar cómo obtenemos una imagen impresa en un papel mediante una impresora de inyección de tinta.
+
+    Partimos de una imagen digital que, como sabrá, está compuesta de múltiples puntos, llamados pixels. Es la unión de millones de pequeños pixels, imperceptibles uno a uno a simple vista, lo que construye la imagen final. Estamos tan acostumbrados al mundo de la imagen digital que parece que ya no recordamos que hace nada las imágenes no se hacían así.</p>
+</div>
+
+<!-- PROCESO GENERAL -->
+<div class="indice">
+    <h2 id="proceso">2. Proceso general</h2>
+    <p>Bajo la denominación de Fabricación Aditiva se agrupan ya decenas de nuevas tecnologías de fabricación. Sin embargo, sin entrar en demasiados detalles técnicos, es posible explicar de una forma general en qué consisten todas ellas. </p>
+    <p>Como veremos más adelante, existen actualmente una multitud de tecnologías de fabricación aditiva, si bien es posible establecer un proceso genérico común a todas ellas, que consta de las siguientes fases: </p>
+
+    <div class="carousel-box">
+        <img id="imgProceso" class="carousel-img" src="Imagenes/modelocad.gif">
+        <h3 id="subProceso">Creación del modelo CAD</h3>
+        <p id="descProceso">El primer paso común a un proceso de fabricación aditiva es generar un modelo de ordenador en 3D del producto que queremos obtener. Existen actualmente múltiples sistemas de diseño de piezas en 3D, si bien de forma general podemos considerar 3 tipos:Herramientas de CAD / Modelado de Sólidos, Herramientas de Escultura 3D y Modelado de superficie / malla 3D.</p>
+
+        <div class="carousel-controls">
+            <button onclick="prevProceso()">Anterior</button>
+            <button onclick="nextProceso()">Siguiente</button>
+        </div>
+    </div>
+</div> 
+
+<!-- Concepto y Clasificación de la Manufactura Aditiva -->
+<div class="indice"> 
+    <h2 id="Concepto y Clasificación de la Manufactura Aditiva">3. Concepto y Clasificación de la Manufactura Aditiva</h2>
+    <p>La manufactura aditiva (AM) comprende un conjunto de procesos de fabricación donde las piezas se crean mediante la adición de material capa por capa. Según la norma ASTM F2792, los procesos se clasifican en siete categorías:</p>
+    <table>
+        <tr><th>Proceso</th><th>Descripción</th></tr>
+        <tr><td>Fusión en cama de polvo (PBF)</td><td>Uso de láser o haz de electrones para fundir polímeros o metales.</td></tr>
+        <tr><td>Extrusión de material (MEX)</td><td>Deposición controlada de filamentos, como en FDM.</td></tr>
+        <tr><td>Fotopolimerización en cuba (VPP)</td><td>Solidificación por luz ultravioleta de resinas líquidas, como SLA.</td></tr>
+        <tr><td>Inyección de aglutinante (Binder Jetting)</td><td>Deposición de un aglutinante sobre polvo metálico o cerámico.</td></tr>
+        <tr><td>Chorro de material (Material Jetting)</td><td>Gotas de fotopolímero curadas selectivamente.</td></tr>
+        <tr><td>Depósito directo de energía (DED)</td><td>Suministro simultáneo de polvo y energía para reparaciones o piezas grandes</td></tr>
+        <tr><td>Hoja por hoja (Sheet Lamination)</td><td>Unión de láminas de material para formar geometrías.</td></tr>
+
+    </table> 
+</div>
+
+<!-- Tecnologías Principales -->
+<div class="indice">
+    <h2 id="Tecnologías Principales">4. Tecnologías Principales</h2>
+    <p> Las tecnologías más empleadas en ingeniería mecánica incluyen:</p>
+    <div class="carousel-box">
+        <img id="imgTec" class="carousel-img" src="Imagenes/FDM.gif">
+        <h3 id="subTec">FDM (Fused Deposition Modeling)</h3>
+        <p id="descTec">Funde un filamento termoplástico y lo deposita capa por capa. Es el método más accesible y ampliamente usado para prototipos funcionales.</p>
+
+        <div class="carousel-controls">
+            <button onclick="prevTec()">Anterior</button>
+            <button onclick="nextTec()">Siguiente</button>
+        </div>
+    </div>
+</div> 
+
+<!-- Materiales Utilizados-->
+<div class="indice"> 
+    <h2 id="Materiales Utilizados">5. Materiales Utilizados</h2>
+    <p>La manufactura aditiva abarca una amplia gama de materiales según el proceso:</p>
+    <table>
+        <tr><th>Tipo de material</th><th>Ejemplos</th></tr>
+        <tr><td>Polímeros</td><td>PLA, ABS, PETG, nylon, TPU.</td></tr>
+        <tr><td>Metales</td><td>Acero inoxidable, titanio, inconel, aluminio.</td></tr>
+        <tr><td>Cerámicos</td><td>Zirconia, alúmina.</td></tr>
+        <tr><td>compuestos</td><td>Filamentos reforzados con fibra de carbono o vidrio.</td></tr>
+    </table> 
+</div>
+
+
+
+<!-- TABLA -->
+<div class="indice">  
+    <h2 id="ventajas">6. Ventajas y Limitaciones</h2>
+    <p> Como veremos más adelante, existen actualmente una multitud de tecnologías de fabricación aditiva, si bien es posible establecer un proceso genérico común a todas ellas, que consta de 6 fases:</p>
+    <p>Puede que a largo plazo así ocurra, pero por el momento las cosas no son tan ideales como aparentan... </p>
+
+    <table>
+        <tr><th>Ventajas</th><th>Limitaciones</th></tr>
+        <tr><td>Geometrías complejas sin costo adicional</td><td>Velocidad de fabricación relativamente baja</td></tr>
+        <tr><td>Personalización total</td><td>Limitación en materiales disponibles</td></tr>
+        <tr><td>Reducción de desperdicio</td><td>Acabados superficiales requieren post-proceso</td></tr>
+        <tr><td>Prototipado rápido</td><td>Costos altos en impresoras industriales</td></tr>
+    </table>
+</div>
+
+<!-- APLICACIONES -->
+<div class="indice">  
+    <h2 id="aplicaciones">7. Aplicaciones</h2>
+    <p>Aunque es imposible echar un vistazo a todos los sectores en los que la impresión 3D está ya pegando con fuerza, repasaremos algunas de las aplicaciones más importantes. </p>
+
+    <img id="imgApp" class="carousel-img" src="Imagenes/aeroespacial.gif">
+        <h3 id="subApp">Aeroespacial</h3>
+        <p id="descApp">
+La impresión 3D en la industria aeroespacial se utiliza en diversas aplicaciones, desde la creación de prototipos hasta la fabricación de componentes complejos y ligeros.</p>
+
+        <div class="carousel-controls">
+            <button onclick="prevApp()">Anterior</button>
+            <button onclick="nextApp()">Siguiente</button>
+        </div>
+    </div>
+</div> 
+
+<!-- CUESTIONARIO -->
+<div class="indice">  
+    <h2 id="cuestionario">8. Cuestionario interactivo</h2>
+
+    <details>
+    <summary>Mostrar cuestionario</summary>
+    <div id="quiz"></div>
+    <button class="btn-check" onclick="checkQuiz()">Revisar respuestas</button>
+    <p id="quizResult"></p>
+    </details>
+</div>
+
+<!-- EJERCICIO 2 -->
+<div class="indice">  
+    <h2 id="ejercicio2">9. Ejercicio de ordenación</h2>
+
+    <details>
+    <summary>Ordena el proceso general</summary>
+
+    <div id="ordenar-container">
+        <p>Arrastra los pasos al orden correcto:</p>
+        <div id="dropzone" class="dropzone"></div>
+        <button id="btn-check-order" onclick="checkOrder()">Verificar</button>
+        <p id="orderResult"></p>
+    </div>
+
+    </details>
+</div>
+
+
+
+<!-- FUENTES -->
+<div class="indice"> 
+    <h2 id="fuentes">10. Fuentes de consulta</h2>
+    <ul>
+        <li>Groover, M. "Fundamentos de Manufactura Moderna". McGraw-Hill.</li>
+        <li>Gibson, Rosen & Stucker. "Additive Manufacturing Technologies". Springer.</li>
+        <li>ASTM F2792 – Standard Terminology for Additive Manufacturing</li>
+    </ul>
+
+    </div>
+</div>
+
+</div> 
+
+<!-- JS -->
+<script>
+
+// ----------------------
+// CAROUSEL PROCESO
+// ----------------------
+const procesos = [
+    ["Imagenes/modelocad.gif", "Creación del modelo CAD", "El primer paso común a un proceso de fabricación aditiva es generar un modelo de ordenador en 3D del producto que queremos obtener. Existen actualmente múltiples sistemas de diseño de piezas en 3D, si bien de forma general podemos considerar 3 tipos:Herramientas de CAD / Modelado de Sólidos, Herramientas de Escultura 3D y Modelado de superficie / malla 3D."],
+    ["Imagenes/slicing.gif", "Slicing", "na vez tenemos el modelo 3D en un formato adecuado, la siguiente fase es establecer las capas que, una a una, van a construir el producto final; esto se hace cortando (rebanando) el modelo en trozos superpuestos muy finos uno sobre otro. Podría parecer que esta fase es algo trivial o estándar; al fin y al cabo, se trata simplemente de cortar por planos horizontales paralelos un objeto conocido. Sin embargo, no es así: esta fase es la que define exactamente en qué forma nuestra máquina va a generar el producto; vamos a traducir un modelo de ordenador a órdenes de la máquina para, trocito a trocito, fabricar un objeto."],
+    ["Imagenes/impresion3d.gif", "Impresión", "Se trata de la impresión propiamente dicha. En esta fase nuestra máquina de fabricación aditiva, nuestra impresora 3D, ejecutará los comandos para construir el rebanado definido en la fase anterior, capa a capa. Lógicamente, esta fase es totalmente dependiente de la tecnología de fabricación 3D seleccionada. Más adelante veremos un resumen de las principales tecnologías, si bien en este momento merece la pena mencionar el código g-code, por ser este el formato más extendido de instrucciones para una impresora 3D. Cada orden en código g-code indica a la impresora la acción detallada que tiene que hacer (ir a la posición XYZ del espacio, depositar un poco de material en esa posición, etc…)."],
+    ["Imagenes/postprocesado.gif", "Postproceso", "En ocasiones, el producto tal y como lo hemos extraído de nuestra máquina de impresión 3D no será suficiente para cumplir con las necesidades finales. Así, dependiendo de la tecnología empleada, en esta fase pueden aparecer trabajos adicionales como: Lijado, Lavado en agua o diferentes disolventes, Eliminación de soportes, Secado, Pintado, Cromado, Vaporizado,  Inyección de material adicional / dopaje para dar mayor resistencia, Etc…"]
+];
+let iProceso=0;
+
+function updateProceso(){
+    document.getElementById("imgProceso").src = procesos[iProceso][0];
+    document.getElementById("subProceso").textContent=procesos[iProceso][1];
+    document.getElementById("descProceso").textContent=procesos[iProceso][2];
+}
+function nextProceso(){ iProceso=(iProceso+1)%procesos.length; updateProceso(); }
+function prevProceso(){ iProceso=(iProceso-1+procesos.length)%procesos.length; updateProceso(); }
+
+
+// ----------------------
+// CAROUSEL APLICACIONES
+// ----------------------
+const apps=[
+    ["Imagenes/aeroespacial.gif","Aeroespacial","La impresión 3D en la industria aeroespacial se utiliza en diversas aplicaciones, desde la creación de prototipos hasta la fabricación de componentes complejos y ligeros."],
+    ["Imagenes/medico.gif","Médica","La impresión 3D en la industria médica se utiliza para una variedad de aplicaciones, incluyendo:Fabricación de implantes personalizados, Creación de modelos anatómicos, Producción de prótesis personalizadas, Investigación médica, etc."],
+    ["Imagenes/3D-Rendering.gif","Automotriz","La impresión 3D en la industria automotriz se utiliza en diversas aplicaciones, desde el diseño y prototipado hasta la fabricación de piezas finales. Algunas de las aplicaciones más destacadas incluyen: Prototipado rápido, Reducción de costos, Personalización y Optimización estructural y ligereza"],
+    ["Imagenes/educacion.gif","Educación","La impresión 3D se ha convertido en un recurso innovador en la educación, ofreciendo múltiples aplicaciones que benefician tanto a los estudiantes como a los docentes. por ejemplo: Creación de mapas topográficos, Modelos anatómicos, Prototipado en Ingeniería y Diseño, Figuras geométricas en Matemáticas, entre muchas otras"]
+];
+let iApp=0;
+
+function updateApp(){
+    document.getElementById("imgApp").src =apps[iApp][0];
+    document.getElementById("subApp").textContent=apps[iApp][1];
+    document.getElementById("descApp").textContent=apps[iApp][2];
+}
+function nextApp(){ iApp=(iApp+1)%apps.length; updateApp(); }
+function prevApp(){ iApp=(iApp-1+apps.length)%apps.length; updateApp(); }
+
+// ----------------------
+// CAROUSEL Tecnologías Principales
+// ----------------------
+const Tec=[
+    ["Imagenes/FDM.gif","FDM (Fused Deposition Modeling)","Funde un filamento termoplástico y lo deposita capa por capa. Es el método más accesible y ampliamente usado para prototipos funcionales."],
+    ["Imagenes/sla.gif","SLA (Stereolithography)","Utiliza un láser UV para curar resina líquida. Destaca por su alta precisión y acabado superficial."],
+    ["Imagenes/sls.gif","SLS (Selective Laser Sintering)","Usa un láser para sinterizar polvo polimérico. Permite piezas fuertes sin necesidad de soportes."],
+    ["Imagenes/dmls.gif","DMLS / SLM","Es un proceso de fabricación aditiva que utiliza un láser para fusionar polvo metálico y crear piezas metálicas densas directamente a partir de modelos CAD."]
+];
+let iTec=0;
+
+function updateTec(){
+    document.getElementById("imgTec").src =Tec[iTec][0];
+    document.getElementById("subTec").textContent=Tec[iTec][1];
+    document.getElementById("descTec").textContent=Tec[iTec][2];
+}
+function nextTec(){ iTec=(iTec+1)%Tec.length; updateTec(); }
+function prevTec(){ iTec=(iTec-1+Tec.length)%Tec.length; updateTec(); }
+
+
+// ----------------------
+// CUESTIONARIO
+// ----------------------
+const preguntas = [
+    {p:"¿Qué es la manufactura aditiva?", o:["Agregar material capa por capa","Remover material","Fundir arena"], r:0},
+    {p:"Archivo común para impresión 3D:", o:[".STL",".DOC",".MP3"], r:0},
+    {p:"¿Cuál es un proceso de post-proceso?", o:["Lijado","Torneado","Forjado"], r:0},
+    {p:"Tecnología FDM usa:", o:["Filamento","Polvo metálico","Resina"], r:0},
+    {p:"La manufactura aditiva permite:", o:["Geometrías complejas","Sólo piezas simples","Solo metales"], r:0},
+    {p:"Proceso previo a imprimir:", o:["Slicing","Fundición","Temple"], r:0},
+    {p:"Material común en SLS:", o:["Polvo","Filamento","Madera"], r:0},
+    {p:"Ventaja clave:", o:["Personalización","Alto desperdicio","Proceso lento"], r:0},
+    {p:"Aplicación típica:", o:["Prótesis","Textiles","Cerámica artesanal"], r:0},
+    {p:"La impresión 3D es:", o:["Aditiva","Sustractiva","Híbrida"], r:0}
+];
+
+function loadQuiz(){
+    let qHtml="";
+    preguntas.forEach((q,idx)=>{
+        qHtml+=`<div class="question">
+            <p><b>${idx+1}. ${q.p}</b></p>`;
+        q.o.forEach((op,i)=>{
+            qHtml+=`<label><input type="radio" name="q${idx}" value="${i}"> ${op}</label><br>`;
+        });
+        qHtml+=`</div>`;
+    });
+    document.getElementById("quiz").innerHTML=qHtml;
+}
+loadQuiz();
+
+function checkQuiz(){
+    let correct=0;
+    preguntas.forEach((q,i)=>{
+        let sel=document.querySelector(`input[name='q${i}']:checked`);
+        if(sel && Number(sel.value)===q.r) correct++;
+    });
+    document.getElementById("quizResult").textContent=
+        `Aciertos: ${correct} de ${preguntas.length}`;
+}
+
+
+// ----------------------
+// EJERCICIO ORDENAR
+// ----------------------
+const pasosCorrectos = [
+    "Diseño CAD",
+    "Slicing",
+    "Impresión 3D",
+    "Post-procesado"
+];
+
+function loadOrderExercise(){
+    let shuffled=[...pasosCorrectos].sort(()=>Math.random()-0.5);
+
+    const dropzone=document.getElementById("dropzone");
+    dropzone.innerHTML="";
+
+    shuffled.forEach(txt=>{
+        let div=document.createElement("div");
+        div.className="draggable";
+        div.draggable=true;
+        div.textContent=txt;
+
+        div.addEventListener("dragstart", e=>{
+            e.dataTransfer.setData("text", txt);
+        });
+
+        dropzone.appendChild(div);
+    });
+
+    dropzone.addEventListener("dragover", e=>e.preventDefault());
+    dropzone.addEventListener("drop", e=>{
+        e.preventDefault();
+        let txt=e.dataTransfer.getData("text");
+
+        let dragged=[...dropzone.children].find(d=>d.textContent===txt);
+        if(dragged) dropzone.appendChild(dragged);
+    });
+}
+
+loadOrderExercise();
+
+function checkOrder(){
+    const items=[...document.getElementById("dropzone").children].map(i=>i.textContent);
+
+    let ok = JSON.stringify(items) === JSON.stringify(pasosCorrectos);
+
+    document.getElementById("orderResult").textContent =
+        ok ? "¡Correcto! El orden es adecuado." : "Orden incorrecto. Intenta de nuevo.";
+}
+
+</script>
+
+</body>
+</html>
