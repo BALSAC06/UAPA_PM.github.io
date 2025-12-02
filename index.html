@@ -39,7 +39,7 @@
             justify-content: flex-end;
             gap: 40px;
             padding: 20px 40px;
-            background: white;
+            background: rgb(201, 199, 199);
             position: sticky;
             top: 0;
             z-index: 10;
@@ -320,8 +320,8 @@
 <!-- TABLA -->
 <div class="indice">  
     <h2 id="ventajas">6. Ventajas y Limitaciones</h2>
-    <p> Como veremos más adelante, existen actualmente una multitud de tecnologías de fabricación aditiva, si bien es posible establecer un proceso genérico común a todas ellas, que consta de 6 fases:</p>
-    <p>Puede que a largo plazo así ocurra, pero por el momento las cosas no son tan ideales como aparentan... </p>
+    <p> Como vimos anteriormente, existen actualmente una multitud de tecnologías de fabricación aditiva, las cuales tienen muchas ventajas, lo que abre una ventana de oportunidades para la ingeniería.:</p>
+    <p>Por el momento las cosas no son tan ideales como aparentan, puesto que los procesos de manufactura aditiva tambien tienen una serie de limitaciones las cuales deben ser consideradas, si se elige alguno de estos métodos. </p>
 
     <table>
         <tr><th>Ventajas</th><th>Limitaciones</th></tr>
@@ -384,7 +384,7 @@ La impresión 3D en la industria aeroespacial se utiliza en diversas aplicacione
 <div class="indice"> 
     <h2 id="fuentes">10. Fuentes de consulta</h2>
     <ul>
-        <li>Groover, M. "Fundamentos de Manufactura Moderna". McGraw-Hill.</li>
+        <li>Boizas, G. M. (s. f.-b). Fabricación Aditiva - Cómo y Porqué de la Impresión 3D. http://fabricacionaditiva.online/</li>
         <li>Gibson, Rosen & Stucker. "Additive Manufacturing Technologies". Springer.</li>
         <li>ASTM F2792 – Standard Terminology for Additive Manufacturing</li>
     </ul>
@@ -538,14 +538,71 @@ function loadOrderExercise(){
 
 loadOrderExercise();
 
-function checkOrder(){
-    const items=[...document.getElementById("dropzone").children].map(i=>i.textContent);
+function checkOrder() {
+    const dropzone = document.getElementById("dropzone");
+    const items = [...dropzone.children].map(i => i.textContent.trim());
 
     let ok = JSON.stringify(items) === JSON.stringify(pasosCorrectos);
 
-    document.getElementById("orderResult").textContent =
-        ok ? "¡Correcto! El orden es adecuado." : "Orden incorrecto. Intenta de nuevo.";
+    const result = document.getElementById("orderResult");
+    result.textContent = ok ? "✔ ¡Correcto! El orden es adecuado." : "✘ Orden incorrecto. Intenta de nuevo.";
+
+    if (!ok) {
+        // Mezclar automáticamente cuando es incorrecto
+        setTimeout(() => {
+            mezclarBloques(dropzone);
+        }, 600);
+    } else {
+        // Si es correcto → reiniciar el ejercicio
+        setTimeout(() => {
+            result.textContent = "Ejercicio reiniciado. Intenta de nuevo.";
+            mezclarBloques(dropzone);
+        }, 1200);
+    }
 }
+
+// Función para mezclar aleatoriamente los bloques
+function checkOrder() {
+    const dropzone = document.getElementById("dropzone");
+    const result = document.getElementById("orderResult");
+    const items = [...dropzone.children].map(i => i.textContent.trim());
+
+    const ok = JSON.stringify(items) === JSON.stringify(pasosCorrectos);
+
+    if (ok) {
+        // Mensaje correcto
+        result.textContent = "✔ ¡Correcto! El orden es adecuado.";
+        result.style.color = "#0a7a27";    // Verde
+        dropzone.style.border = "3px solid #0a7a27";
+        dropzone.style.background = "#e9ffe9";
+
+        // Reiniciar ejercicio
+        setTimeout(() => {
+            result.textContent = "Ejercicio reiniciado. Intenta de nuevo.";
+            result.style.color = "#003b5c"; // color normal
+            dropzone.style.border = "2px dashed #888";
+            dropzone.style.background = "white";
+            mezclarBloques(dropzone);
+        }, 1200);
+
+    } else {
+        // Mensaje incorrecto
+        result.textContent = "✘ Orden incorrecto. Intenta de nuevo.";
+        result.style.color = "#b00020";   // Rojo
+        dropzone.style.border = "3px solid #b00020";
+        dropzone.style.background = "#ffe5e5";
+
+        // Mezclar bloques tras un pequeño delay
+        setTimeout(() => {
+            result.style.color = "#003b5c"; // normal
+            dropzone.style.border = "2px dashed #888";
+            dropzone.style.background = "white";
+            mezclarBloques(dropzone);
+        }, 900);
+    }
+}
+
+
 
 const secciones = document.querySelectorAll("section[id]");
         const links = document.querySelectorAll(".menu a");
