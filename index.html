@@ -14,15 +14,20 @@
         background-color: #003b5c;
         color:#222;
         line-height:1.6;
-        background-image: url('Imagenes/fondo.gif');
+        background-image: url('Imagenes/fondo.jpg');
+        background-size: cover;
     }
     header{
-        background-image: url('Imagenes/manufactura-aditiva.jpg');
+        background-image:  url('Imagenes/fondo.png') ;
+        background-size: cover;
         background-position: center;
-        color:rgb(4, 255, 247);
+        color:rgb(255, 255, 0);
         padding:120px;
         text-align:center;
-        font-size: 40px;
+        font-size: 50px;
+        background-image: -moz-linear-gradient(20%)
+        ;
+        
     }
     h1,h2,h3{
         font-weight:700;
@@ -95,15 +100,28 @@
         border-radius:10px;
         box-shadow:0 3px 10px rgba(0,0,0,0.1);
         margin-bottom:3px;
+        object-position: center;
         
     }
   .carousel-img{
     width:100%;
     height:400px;
-    object-fit:cover;
+    object-position: center;
+    object-fit:contain;
     border-radius:10px;
     margin-bottom:15px;
 }
+
+    .imag{
+    width:100%;
+    height:400px;
+    object-position: cover;
+    object-fit:contain;
+    border-radius:10px;
+    margin-bottom:15px;
+
+    }
+
     .carousel-controls{
         display:flex;
         justify-content:space-between;
@@ -170,38 +188,108 @@
         margin-top:10px;
     }
 
-    /* EJERCICIO ORDENAR */
-    #ordenar-container{
-        background:#fff;
-        padding:20px;
-        border-radius:10px;
-        box-shadow:0 3px 10px rgba(0,0,0,0.1);
-    }
-    .draggable{
-        padding:12px;
-        background:#d7e9ff;
-        border:1px solid #aac8ff;
-        border-radius:8px;
-        margin:8px 0;
-        cursor:grab;
-        font-weight:700;
-    }
-    .dropzone{
-        min-height:200px;
-        padding:15px;
-        border:2px dashed #003b5c;
-        border-radius:10px;
-        background:#f1f8ff;
-    }
-    #btn-check-order{
-        margin-top:15px;
-        padding:10px 20px;
-        background:#003b5c;
-        color:white;
-        border:none;
-        border-radius:8px;
-        cursor:pointer;
-    }
+   
+
+ .tabla-colapsable {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+/* Cuando se despliega */
+.tabla-colapsable.abierto {
+    max-height: 200px; /* Altura máxima visible antes del scroll */
+}
+
+/* El scroll vertical */
+.tabla-scroll {
+    max-height: 200px;
+    overflow-y: auto; /* Activa la barra de desplazamiento vertical */
+}
+
+/* Estilos del botón */
+.toggle-btn {
+    padding: 8px 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.img-center {
+  width: 600px;         /* Se ajusta al tamaño de la imagen */
+  margin: 20px auto;          /* Centra el bloque figura completo */
+  text-align: center;         /* Centra el pie de foto */
+}
+
+.img-center img {
+  max-width: 100%;            /* Responsivo */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.img-center figcaption {
+  font-size: 0.75rem;         /* Pie de foto pequeño */
+  color: #555;                /* Gris discreto */
+  margin-top: 4px;
+  font-style: italic;         /* Estilo típico de pies de foto */
+}
+
+/* Estilo del desplegable */
+.details-box {
+    border: 2px solid #004b8d;
+    border-radius: 10px;
+    padding: 10px;
+    background: #f5faff;
+    font-family: Arial, sans-serif;
+}
+
+ summary {
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Contenedor del cuestionario */
+.question-box {
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+/* Respuestas */
+.option {
+    margin: 8px 0;
+    padding: 8px;
+    border: 1px solid #777;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.option:hover {
+    background: #e0ecff;
+}
+
+/* Colores de retroalimentación */
+.correct {
+    background: #c2f7c2 !important;
+    border-color: #2e8b57 !important;
+}
+
+.incorrect {
+    background: #f7c2c2 !important;
+    border-color: #8b0000 !important;
+}
+
+/* Procedimiento */
+#procedure {
+    margin-top: 15px;
+    padding: 12px;
+    background: #fff7d9;
+    border-left: 4px solid #c97d00;
+    border-radius: 6px;
+    display: none;
+}
 
 </style>
 </head>
@@ -209,7 +297,7 @@
 
 <header>
     
-    <h1>Manufactura Aditiva</h1>
+    <h1>Proceso de Torneado</h1>
     <p>Procesos de Manufactura </p>
     <p>Departamento de Diseño y Manufactura</p>
 </header>
@@ -228,41 +316,49 @@
 <div class="indice">
     <h2 id="Indice">Indice</h2>
     <a href="#intro">1. Introducción</a>
-    <a href="#proceso">2. Proceso general</a>
-    <a href="#Concepto y Clasificación de la Manufactura Aditiva">3. Concepto y Clasificación de la Manufactura Aditiva</a>
-    <a href="#Tecnologías Principales">4. Tecnologías Principales</a>
-    <a href="#Materiales Utilizados">5. Materiales Utilizados</a>
-    <a href="#ventajas">6. Ventajas y Limitaciones</a>
-    <a href="#aplicaciones">7. Aplicaciones</a>
-    <a href="#cuestionario">8. Cuestionario interactivo</a>
-    <a href="#ejercicio2">9. Ejercicio de ordenación</a>
+    <a href="#proceso">2. ¿QUÉ ES EL PROCESO DE TORNEADO?</a>
+    <a href="#Concepto y Clasificación de la Manufactura Aditiva">3. Condiciones de corte en el torneado</a>
+    <a href="#Tecnologías Principales">4. Operaciones relacionadas con el torneado</a>
+    <a href="#Materiales Utilizados">5. El torno mecánico</a>
+    <a href="#ventajas">6. MÉTODOS DE SUJECIÓN DE UN TORNO</a>
+    <a href="#aplicaciones">7. FÓRMULAS y RECURSOS PARA EL CÁLCULO</a>
+    <a href="#cuestionario">8. EJEMPLO</a>
+    <a href="#ejercicio2">9. Ejercicios</a>
     <a href="#fuentes">10. Fuentes de consulta</a>
 </div>
 
 <!-- INTRO -->
 <div class="indice">
     <h2 id="intro">1. Introducción</h2>
-    <p>La Fabricación Aditiva o impresión 3D es posiblemente el componente más conocido de la llamada Industria 4.0, la nueva revolución industrial, y sin embargo no todos conocen en qué consiste y el porqué de este nuevo tipo de fabricación. </p>
-    <p>La manufactura aditiva (AM) es un conjunto de procesos que crean piezas mediante la adición controlada de material capa sobre capa. Ha transformado sectores como aeroespacial, médico, automotriz y manufactura de prototipos.</p>
-
-    <p>Llamamos fabricación conformativa (o formativa, según otros autores) a aquella en la que un material es obligado (por presión, a golpes, derritiéndolo o por cualquier otro procedimiento) a adquirir la forma y dimensiones que nos interese. La fabricación sustractiva sería aquella en la que se van eliminando trozos de material (a golpes, lijado, fresado u otro procedimiento) de un bloque compacto inicial hasta conseguir el producto deseado. </p>
-    <p> La moderna impresión 3D consiste precisamente en eso: en ir añadiendo elementos de material de forma muy precisa, asegurando la correcta unión entre los distintos elementos añadidos (por ejemplo, haciendo que el material esté a una temperatura tal que una adecuada fusión entre capas es posible); y todo ello de forma automática, controlada por un ordenador y a partir de un diseño preliminar en 3D.
-
-    Como analogía, vamos a revisar cómo obtenemos una imagen impresa en un papel mediante una impresora de inyección de tinta.
-
-    Partimos de una imagen digital que, como sabrá, está compuesta de múltiples puntos, llamados pixels. Es la unión de millones de pequeños pixels, imperceptibles uno a uno a simple vista, lo que construye la imagen final. Estamos tan acostumbrados al mundo de la imagen digital que parece que ya no recordamos que hace nada las imágenes no se hacían así.</p>
+    <p>El  maquinado  es  el  más  versátil  y  preciso  de  todos  los  procesos  de  manufactura  por  su  capacidad  de  producir  una  
+        diversidad  de  piezas  y  características  geométricas  (por  ejemplo, roscas de tornillos, dientes de engrane, superficies lisas). 
+        La fundición también puede producir una variedad de formas, pero carece de la precisión y exactitud del maquinado. </p>
+    <p>La remoción de material como un medio de manufactura se remonta a los tiempos prehistóricos cuando los seres humanos aprendieron a 
+        tallar la madera y esculpir piedras para hacer implementos de caza y labranza. Hay evidencias arqueológicas de que los antiguos egipcios 
+        usaron mecanismos rotatorios de palos y cuerdas para taladrar agujeros.</p>
+    <p>La aparición de las máquinas herramienta modernas se relaciona estrechamente con la Revolución Industrial. Cuando James Watt diseñó su 
+        máquina de vapor en Inglaterra alrededor de 1763, uno de los problemas técnicos que enfrentó fue hacer la perforación del cilindro lo 
+        suficientemente preciso para prevenir que el vapor se escapara alrededor del pistón. John Wilkinson construyó una máquina perforadora con 
+        una rueda movida por agua alrededor de 1775, la cual permitió a Watt construir su máquina de vapor. </p>
+    <p>En la operación característica que produce estas formas, una herramienta de corte elimina material de una pieza de trabajo giratoria. 
+        Los ejemplos incluyen el torneado y el perforado.</p>
 </div>
 
 <!-- PROCESO GENERAL -->
 <div class="indice">
-    <h2 id="proceso">2. Proceso general</h2>
-    <p>Bajo la denominación de Fabricación Aditiva se agrupan ya decenas de nuevas tecnologías de fabricación. Sin embargo, sin entrar en demasiados detalles técnicos, es posible explicar de una forma general en qué consisten todas ellas. </p>
-    <p>Como veremos más adelante, existen actualmente una multitud de tecnologías de fabricación aditiva, si bien es posible establecer un proceso genérico común a todas ellas, que consta de las siguientes fases: </p>
+    <h2 id="proceso">2. ¿QUÉ ES EL PROCESO DE TORNEADO?</h2>
+    <p>El torneado  es  un  proceso  de  maquinado  en  el  cual  una  herramienta  de  una  sola  punta  remueve  material  de  la  superficie  de
+        una  pieza  de  trabajo  cilíndrica  en  rotación;  la  herramienta  avanza  linealmente  y  en  una  dirección  paralela  al  eje  de  rotación,
+        como  se  ilustra en las figuras sigientes: </p>
+    <p> </p>
 
     <div class="carousel-box">
-        <img id="imgProceso" class="carousel-img" src="Imagenes/modelocad.gif">
-        <h3 id="subProceso">Creación del modelo CAD</h3>
-        <p id="descProceso">El primer paso común a un proceso de fabricación aditiva es generar un modelo de ordenador en 3D del producto que queremos obtener. Existen actualmente múltiples sistemas de diseño de piezas en 3D, si bien de forma general podemos considerar 3 tipos:Herramientas de CAD / Modelado de Sólidos, Herramientas de Escultura 3D y Modelado de superficie / malla 3D.</p>
+        <img id="imgProceso" class="carousel-img" src="Imagenes/Torneado recto.jpg">
+        <h3 id="subProceso">Torneado recto</h3>
+        <p id="descProceso">El torneado recto es un proceso de mecanizado utilizado para reducir el diámetro de piezas cilíndricas a un tamaño 
+            específico. Este proceso implica el avance de la herramienta de corte en paralelo al eje de rotación de la pieza, produciendo secciones
+            cilíndricas con acabados limpios y precisos. Se aplica comúnmente en la fabricación de ejes y pasadores, y es utilizado tanto en las
+            etapas de desbaste como de acabado. Además, el torneado recto ayuda a mejorar la eficacia general al reducir residuos y repeticiones.</p>
 
         <div class="carousel-controls">
             <button onclick="prevProceso()">Anterior</button>
@@ -271,32 +367,109 @@
     </div>
 </div> 
 
+<div class="indice">
+    <h2 id="Condiciones de corte en el torneado">3. Condiciones de corte en el torneado </h2>
+    <p>La velocidad de rotación en el torneado se relaciona con la velocidad de corte requerida en la superficie cilíndrica de la pieza de trabajo 
+    por la ecuación</p>
+    <P><h2> $$\ N = \frac{\ v}{\pi D_0} $$</h2></P>
+    <p>donde N = velocidad de rotación, rev/min; v = velocidad de corte, m/min (ft/min);  y D =diámetro original de la pieza, m (ft).</p>
+    <p>La operación de torneado reduce el diámetro del trabajo Do al diámetro final Df. El cambio de diámetro se determina por la profundidad de corte d:</p>
+    <p><h2>$$ \ D_F = D_0 - 2d $$</h2></p>
+    <P>El avance en el torneado se expresa generalmente en mm/rev (in/rev). Este avance se pue-de convertir a velocidad de avance lineal en mm/min
+     (in/min) mediante la fórmula:</P>
+    <p><h2> $$\ f_T = Nf $$</h2></p>
+    <p>donde fr = velocidad de avance, mm/min (in/min); y f= avance, mm/rev (in/rev).</p>
+    <p>El tiempo para maquinar una pieza de trabajo cilíndrica de un extremo a otro está dado por</p>
+    <p><h2> $$ \ T_m = \frac{\ L}{f_r} \ $$</h2></p>
+    <p>donde Tm= tiempo de maquinado en min; y L= longitud de la pieza cilíndrica en mm (in). Un cálculo más directo del tiempo de maquinado lo proporciona la ecuación siguiente:</p>
+    <p><h2> $$ \ T_m = \frac{\pi D_0 L}{f_v} \ $$</h2></p>
+    <p>donde Do= diámetro del trabajo, mm (in); L=longitud de la pieza de trabajo, mm (in); f=  avance,  mm/rev  (in/rev);  y  v=  velocidad  de  corte,  mm/min  (in/min).  Como  práctica  general, se añade una pequeña distancia a la longitud al principio y al final de la pieza de trabajo para dar margen a la aproximación y al sobrerrecorrido de la herramienta.</p>
+    <p>La  velocidad  volumétrica  de  remoción  del  material  se  puede  determinar  más  convenientemente por la ecuación siguiente:</p>
+    <p><h2> $$\ R_{MR} = vfd $$</h2></p>
+    <p>donde R= velocidad de remoción de material, mm3/min (in3/min). En esta ecuación las unidades de f se expresan simplemente como mm (in), ignorando el efecto de la rotación del torneado. Asimismo, se debe tomar las medidas necesarias para asegurarse de que las unidades de la velocidad sean consistentes con las de f y d.</p>
+    <p></p>
+</div>
+
 <!-- Concepto y Clasificación de la Manufactura Aditiva -->
 <div class="indice"> 
-    <h2 id="Concepto y Clasificación de la Manufactura Aditiva">3. Concepto y Clasificación de la Manufactura Aditiva</h2>
-    <p>La manufactura aditiva (AM) comprende un conjunto de procesos de fabricación donde las piezas se crean mediante la adición de material capa por capa. Según la norma ASTM F2792, los procesos se clasifican en siete categorías:</p>
-    <table>
-        <tr><th>Proceso</th><th>Descripción</th></tr>
-        <tr><td>Fusión en cama de polvo (PBF)</td><td>Uso de láser o haz de electrones para fundir polímeros o metales.</td></tr>
-        <tr><td>Extrusión de material (MEX)</td><td>Deposición controlada de filamentos, como en FDM.</td></tr>
-        <tr><td>Fotopolimerización en cuba (VPP)</td><td>Solidificación por luz ultravioleta de resinas líquidas, como SLA.</td></tr>
-        <tr><td>Inyección de aglutinante (Binder Jetting)</td><td>Deposición de un aglutinante sobre polvo metálico o cerámico.</td></tr>
-        <tr><td>Chorro de material (Material Jetting)</td><td>Gotas de fotopolímero curadas selectivamente.</td></tr>
-        <tr><td>Depósito directo de energía (DED)</td><td>Suministro simultáneo de polvo y energía para reparaciones o piezas grandes</td></tr>
-        <tr><td>Hoja por hoja (Sheet Lamination)</td><td>Unión de láminas de material para formar geometrías.</td></tr>
+    <h2 id="Concepto y Clasificación de la Manufactura Aditiva"> Operaciones relacionadas con el torneado </h2>
+    <p>Además del torneado, se puede realizar una gran variedad de operaciones de maquinado en un torno. En la figura 22.6 se ilustran las siguientes:</p>
+    
+    <div class="carousel-box">
+                <img src="Imagenes/operaciones.png" 
+     style="max-width: 100%; height: auto; display: block; margin: auto;">
 
-    </table> 
+    </div>
+    <button id="btnToggle" class="toggle-btn">Mostrar tabla</button>
+
+  <div id="contenedorTabla" class="tabla-colapsable">
+    <div class="tabla-scroll">
+        <table border="1">
+        <tr><th> Proceso</th><th>Descripción</th></tr>
+            <tr><td>a. CAREADO</td><td>La herramienta se alimenta radialmente sobre el extremo del trabajo rotato-rio para crear una superficie plana.</td></td>
+            <tr><td>b. Torneado ahusado o cónico</td><td>En lugar de que la herramienta avance paralelamente al eje de rotación del trabajo, lo hace en cierto ángulo creando una forma cónica.</td></tr>
+            <tr><td>c. Torneado de contornos.</td><td>En lugar de que la herramienta avance a lo largo de una línea recta  paralela  al  eje  de  rotación  como  en  torneado,  sigue  un  contorno  diferente  a  la  línea recta, creando así una forma contorneada en la pieza torneada.</td></tr>
+            <tr><td>d. Torneado de formas.</td><td> En esta operación llamada algunas veces formado, la herramienta tiene una forma que se imparte al trabajo y se hunde radialmente dentro del trabajo</td></tr>
+            <tr><td>e. Achaflanado.</td><td>El borde cortante de la herramienta se usa para cortar un ángulo en la esquina del cilindro y forma lo que se llama un “chaflan”.</td></tr>
+            <tr><td>f. Tronzado.</td><td>La herramienta avanza radialmente dentro del trabajo en rotación, en algún punto a lo largo de su longitud, para trozar el extremo de la pieza. A esta operación se le llama algunas veces partición</td></tr>
+            <tr><td>g. Roscado.</td><td>Una  herramienta  puntiaguda  avanza  linealmente  a  través  de  la  superficie  externa de la pieza de trabajo en rotación y en dirección paralela al eje de rotación, a una velocidad de avance suficiente para crear cuerdas roscadas en el cilindro.</td></tr>
+            <tr><td>h. Perforado.</td><td> Una herramienta de punta sencilla avanza en línea paralela al eje de rota-ción, sobre el diámetro interno de un agujero existente en la pieza.</td></tr>
+            <tr><td>i. Taladrado</td><td>El taladrado se puede ejecutar en un torno, haciendo avanzar la broca dentro del trabajo rotatorio a lo largo de su eje. El escariado se puede realizar en forma similar.</td></tr>
+            <tr><td>j. Moleteado</td><td>Ésta es una operación de maquinado porque no involucra corte de mate-rial. Es una operación de formado de metal que se usa para producir un rayado regular o un patrón en la superficie de trabajo</td></tr>    
+        </table>
+    </div>   
+  </div>
 </div>
 
 <!-- Tecnologías Principales -->
 <div class="indice">
-    <h2 id="Tecnologías Principales">4. Tecnologías Principales</h2>
-    <p> Las tecnologías más empleadas en ingeniería mecánica incluyen:</p>
-    <div class="carousel-box">
-        <img id="imgTec" class="carousel-img" src="Imagenes/FDM.gif">
-        <h3 id="subTec">FDM (Fused Deposition Modeling)</h3>
-        <p id="descTec">Funde un filamento termoplástico y lo deposita capa por capa. Es el método más accesible y ampliamente usado para prototipos funcionales.</p>
+    <h2 id="Tecnologías Principales">El torno mecánico</h2>
+    <p>El torno básico usado para torneado y operaciones afines es un torno mecánico. Es una máquina herramienta muy versátil que se opera en forma
+        manual y se utiliza ampliamente en producción baja y media.</p>
+   
+    <img src="Imagenes/tornoDi.png" 
+     alt="Descripción de la imagen"
+     style="max-width: 100%; height: auto; display: block; margin: auto;">
 
+    <figcaption>Diagrama de un torno mecánico, en que se indican sus componentes principales.</figcaption>
+   
+
+    <p>La figura anterior es un diagrama de un torno mecánico en el que se muestran sus componentes principales. El cabezal contiene la unidad de 
+        transmi-sión que mueve el husillo que hace girar al trabajo. Opuesta al cabezal está el contrapunto, en el cual se monta un centro para 
+        sostener el otro extremo de la pieza de trabajo</p>
+    <P>La herramienta de corte es sostenida por una torreta que se encuentra fija al carro transversal, que se ensambla al carroprincipal. 
+        El carro principal se diseña para deslizarse sobre  las  guías  del  torno  a  fin  de  hacer  avanzar  la  herramienta  paralelamente  al
+        eje  de  rotación. Las guías son una especie de rieles a lo largo de los cuales se mueve el carro y están hechas con gran precisión para 
+        lograr un alto grado de paralelismo respecto al eje del husillo. Las guías se construyen sobre la bancada del torno que provee un armazón
+        rígido para la máquina herramienta.</P>
+    <p>El carro se mueve por medio de un tornillo guía que gira a la velocidad propia para obtener la velocidad de avance deseada. El carro 
+        transversal está diseñado para avanzar en  una  dirección  perpendicular  al  movimiento  del  carro.  Por  tanto,  al  mover  el  carro,
+        la  herramienta puede avanzar paralela al eje del trabajo para ejecutar el torneado recto. Y al mover el carro transversal, la herramienta 
+        puede avanzar radialmente dentro del trabajo para ejecutar el careado, el torneado de forma o la operación de tronzado</p>
+    <p>El  torno  mecánico  convencional  y  la  mayoría  de  otras  máquinas  descritas  en  esta  sección son máquinas de torneado horizontal, es
+         decir, el eje del husillo es horizontal. Esto es adecuado para la mayoría de los trabajos de torno donde la longitud es mayor que el 
+         diámetro. Para trabajos donde el diámetro es mayor que la longitud y el trabajo es pesado, es  más  conveniente  orientar  el  trabajo  
+         de  manera  que  gire  alrededor  de  un  eje  vertical;  éstas son las máquinas de torneado vertical</p>
+    <p>El tamaño del torno se designa por el volteo y la máxima distancia admisible entre centros. El volteo es el diámetro máximo de la pieza de 
+        trabajo que puede girar el husillo; se determina como el doble de la distancia que existe entre el eje central del husillo y las guías de la
+         máquina. El máximo tamaño real de la pieza de trabajo cilíndrica que puede acomodarse en el torno es algo más pequeña, debido a que el 
+         carro y la corredera lateral están sobre las guías. La máxima distancia entre los centros indica la longitud máxima de la pieza de trabajo
+          que puede ser montada entre el cabezal y el contrapunto. Por ejemplo, un torno de 350 mm X 1.2 m (14 in X 48 in) indica que el volteo es
+           de 350 mm (14 in) y la máxima distancia entre centros es de 1.2 m (48 in).</p>
+</div>
+
+<div class="indice">
+    <h2 id="MÉTODOS DE SUJECIÓN DE UN TORNO">MÉTODOS DE SUJECIÓN DE UN TORNO</h2>    
+    <div class="carousel-box">
+        <img id="imgTec" class="carousel-img" src="Imagenes/Perro de arrastre.png">
+        <h3 id="subTec">Montado del trabajo entre centros usando un perro de arrastre</h3>
+        <p id="descTec"> Este método es apropiado para piezas que tienen una alta relación entre la longitud y el diámetro. En el centro del cabezal
+            se fija una brida llamada perro o plato de arrastre, en la parte exterior  del  trabajo  que  se  usa  para  transmitir  la  rotación
+            del  husillo.  El  centro  del  contrapunto tiene una punta en forma de cono que se inserta en un agujero practicado en el extremo del
+            trabajo. El centro del contrapunto puede ser un centro “vivo” o un centro “muerto”. Un centro vivo gira en un cojinete del contrapunto, de
+            manera que no hay rotación relativa entre el trabajo y el centro vivo y por tanto no hay fricción. En contraste, un centro muerto está fijo
+            en el contrapunto y no gira; la pieza de trabajo gira alrededor de la punta. Debido a la fricción y a la acumulación del calor que resulta,
+            esta disposición se usa normalmente a menores velocidades de rotación. El centro vivo se puede usar a altas velocidades.</p>
         <div class="carousel-controls">
             <button onclick="prevTec()">Anterior</button>
             <button onclick="nextTec()">Siguiente</button>
@@ -304,52 +477,108 @@
     </div>
 </div> 
 
+
 <!-- Materiales Utilizados-->
 <div class="indice"> 
-    <h2 id="Materiales Utilizados">5. Materiales Utilizados</h2>
-    <p>La manufactura aditiva abarca una amplia gama de materiales según el proceso:</p>
+    <h1>FÓRMULAS y RECURSOS PARA EL CÁLCULO</h1>
+    <h2 id="Maquinado">5. Velocidad de corte</h2>
+    <p><h2>$$\ V_c  = \frac{\ \pi N D}{60}$$</h2></p>
+    
     <table>
-        <tr><th>Tipo de material</th><th>Ejemplos</th></tr>
-        <tr><td>Polímeros</td><td>PLA, ABS, PETG, nylon, TPU.</td></tr>
-        <tr><td>Metales</td><td>Acero inoxidable, titanio, inconel, aluminio.</td></tr>
-        <tr><td>Cerámicos</td><td>Zirconia, alúmina.</td></tr>
-        <tr><td>compuestos</td><td>Filamentos reforzados con fibra de carbono o vidrio.</td></tr>
-    </table> 
+        <tr><th>Variables</th><th>Descripción</th></tr>
+        <tr><td>$$\ V_c $$</td><td>Velocidad de corte [mm/s]</td></tr>
+        <tr><td>$$ \ N $$</td><td>Revoluciones por minuto [RPM]</td></tr>
+        <tr><td>$$ \ D $$</td><td>Diámetro inicial</td></tr>
+    </table>
+    
+    <h2>Diámetro de corte</h2>
+    <p><h2>$$ \ d = \frac{D_0 - D_f}{2} $$</h2></p>
+    <table>
+        <tr><th>Variables</th><th>Descripción</th></tr>
+        <tr><td>$$\ d $$</td><td>Diámetro de corte / profundidad de corte [mm]</td></tr>
+        <tr><td>$$ \ D_0 $$</td><td>Diámetro inicial [mm]</td></tr>
+        <tr><td>$$ \ D_f $$</td><td>Diámetro final [mm]</td></tr>
+    </table>
+
+    <h2>Velocidad de remoción</h2>
+    <p><h2>$$ \dot{\mathbf{v}} = V_c f d $$</h2></p>
+    <table>
+        <tr><th>Variables</th><th>Descripción</th></tr>
+        <tr><td>$$ \dot{\mathbf{v}}$$</td><td>Velocidad de remoción $$\ [\frac{mm^3}{s}]$$</td></tr>
+        <tr><td>$$\ V_c $$</td><td>Velocidad de corte [mm/s]</td></tr>
+        <tr><td>$$ \ f $$</td><td> Avance de alimentación [mm/rev]</td></tr>
+        <tr><td>$$ \ d $$</td><td>Diámetro de corte [mm]</td></tr>
+    </table>
+
+    <h2>Tiempo de maquinado</h2>
+    <p><h2>$$ \ t_{maq} = \frac{L}{fN} = \frac{L \pi d}{f V_c}$$</h2></p>
+    <table>
+        <tr><th>Variables</th><th>Descripción</th></tr>
+        <tr><td>$$ \ L$$</td><td>Longitud [mm]</td></tr>
+        <tr><td>$$\ f $$</td><td>Avance de alimentación [mm/rev]</td></tr>
+        <tr><td>$$ \ N $$</td><td> Revoluciones por minuto [RPM]</td></tr>
+        <tr><td>$$ \ D $$</td><td>Diámetro inicial</td></tr>
+        <tr><td>$$ \ V_c $$</td><td>Velocidad de corte [mm/s]</td></tr>
+    </table>
+
+    <h2>Potencia Unitaria</h2>
+    <p><h2>$$ \ P_u = \ \frac{Pot}{\dot {\mathbf{V}}} $$</h2></p>
+    <table>
+        <tr><th>Variables</th><th>Descripción</th></tr>
+        <tr><td>$$ \ P_u$$</td><td>Potencia Unitaria $$\ [\frac{W}{\frac{mm^3}{s}}] $$</td></tr>
+        <tr><td>$$\ Pot $$</td><td>Potencia demandada $$\ [\frac{Nm}{s}] $$</td></tr>
+        <tr><td>$$ \ {\dot {\mathbf{V}}} $$</td><td> Velocidad de remoción  $$\ \frac{mm^3}{s} $$</td></tr>
+    </table>
+
+    <h2>Potencia de maquina</h2>
+    <p><h2>$$ \ Pot_{maq} = \ \frac{Pu \dot{\mathbf{V}}}{\eta} $$</h2></p>
+    <table>
+        <tr><th>Variables</th><th>Descripción</th></tr>
+        <tr><td>$$ \ Pot_{maq}$$</td><td>Potencia de maquinaria $$\ [W] $$</td></tr>
+        <tr><td>$$\ P_u $$</td><td>Potencia Unitaria $$\ [\frac{W}{\frac{mm^3}{s}}] $$ </td></tr>
+        <tr><td>$$ \ {\dot {\mathbf{V}}} $$</td><td> Velocidad de remoción  $$\ \frac{mm^3}{s} $$ </td></tr>
+        <tr><td>$$ \ {\eta} $$</td><td>Eficiencia</td></tr>
+    </table>
+
+    <H2>Tabla de potencia unitaria con base en dureza</H2>
+    
+   <img src="Imagenes/Potencia uni.png"
+     alt="Descripción de la imagen"
+     style="max-width: 100%; height: auto; display: block; margin: auto;">
+
+    <figcaption>Tabla de potencia unitaria y dureza Brinell </figcaption>
+   
+
 </div>
 
 
 
 <!-- TABLA -->
 <div class="indice">  
-    <h2 id="ventajas">6. Ventajas y Limitaciones</h2>
-    <p> Como vimos anteriormente, existen actualmente una multitud de tecnologías de fabricación aditiva, las cuales tienen muchas ventajas, lo que abre una ventana de oportunidades para la ingeniería.:</p>
-    <p>Por el momento las cosas no son tan ideales como aparentan, puesto que los procesos de manufactura aditiva tambien tienen una serie de limitaciones las cuales deben ser consideradas, si se elige alguno de estos métodos. </p>
+    <h2 id="ventajas">EJEMPLO</h2>
+    <p>Se tienen piezas de acero de bajo porcentaje de Carbono, con una dureza HB=225. Se desea que piezas de 11 [cm] de ø pasen a formar piezas de 10.5 [cm] de øf; N=150[RPM]; F=0.2[mm/rev]; si la eficiencia es de 75%. Determine  </p>
+    <p>$$\ a) V_c, d $$</p>
+    <P>$$\ b)  {\dot {\mathbf{V}}} $$ </P>
+    <p>$$\ c)  Pot_{maq} $$</p>
 
-    <table>
-        <tr><th>Ventajas</th><th>Limitaciones</th></tr>
-        <tr><td>Geometrías complejas sin costo adicional</td><td>Velocidad de fabricación relativamente baja</td></tr>
-        <tr><td>Personalización total</td><td>Limitación en materiales disponibles</td></tr>
-        <tr><td>Reducción de desperdicio</td><td>Acabados superficiales requieren post-proceso</td></tr>
-        <tr><td>Prototipado rápido</td><td>Costos altos en impresoras industriales</td></tr>
-    </table>
+    <h3>Solución</h3>
+    <p> <h2>a)</h2>$$ \ V_c = \frac{\pi N D}{60}  = \frac{\pi (150) (110)}{60} $$</p>
+    <p>$$\ V_c = 863.9 [mm/s] $$</p>
+    <P>$$\ d = \frac{D_0 - D_f}{2} = \frac{110 - 105}{2} $$ </P>
+    <p>$$\ =2.5 [mm]$$</p>
+
+    <p><h2>b)</h2> $$\ {\dot {\mathbf{V}}} = V_cfd $$</p>
+    <p>$$\ = 863.9(0.2)(2.5) = 431.96 [\frac{mm^3}{s}]$$</p>
+
+    <p><h2>c) </h2> Haciendo uso de tablas tomando de referencia la dureza del material$$\ P_u=2.2[\frac{w}{\frac{mm^3}{s}}] $$ </p>
+    <p>$$\ Pot_{maq} = \frac{P_u {\dot {\mathbf{V}}}} {\eta} = \frac{(2.2)(431.96)}{0.75} $$</p>
+    <pot>$$\ =1267.05 [W] $$</pot>
+
+    
 </div>
 
-<!-- APLICACIONES -->
-<div class="indice">  
-    <h2 id="aplicaciones">7. Aplicaciones</h2>
-    <p>Aunque es imposible echar un vistazo a todos los sectores en los que la impresión 3D está ya pegando con fuerza, repasaremos algunas de las aplicaciones más importantes. </p>
 
-    <img id="imgApp" class="carousel-img" src="Imagenes/aeroespacial.gif">
-        <h3 id="subApp">Aeroespacial</h3>
-        <p id="descApp">
-La impresión 3D en la industria aeroespacial se utiliza en diversas aplicaciones, desde la creación de prototipos hasta la fabricación de componentes complejos y ligeros.</p>
 
-        <div class="carousel-controls">
-            <button onclick="prevApp()">Anterior</button>
-            <button onclick="nextApp()">Siguiente</button>
-        </div>
-    </div>
-</div> 
 
 <!-- CUESTIONARIO -->
 <div class="indice">  
@@ -364,35 +593,59 @@ La impresión 3D en la industria aeroespacial se utiliza en diversas aplicacione
 </div>
 
 <!-- EJERCICIO 2 -->
-<div class="indice">  
-    <h2 id="ejercicio2">9. Ejercicio de ordenación</h2>
+<div class="indice">
+<details class="details-box">
+    <summary>Ejercicio – Resuelve y elige respuesta correcta</summary>
 
-    <details>
-    <summary>Ordena el proceso general</summary>
+    <div class="question-box" id="questionBox">
+        <p><b>EJERCICIO</b>  
+        En una operación de maquinado con acero simple al carbono cuya dureza Brinell es
+        de 275 HB, la velocidad de corte se configura a 200 m/min y la profundidad de corte
+        es de 6[mm]. El motor del torno consume 25 kw y su eficiencia mecánica es de 80%.
+        Utilizando el valor de energía específica apropiada, determine el avance máximo que
+        se puede obtener en esta operación.
+        
+        <p><b>Selecciona la respuesta correcta:</b></p>
 
-    <div id="ordenar-container">
-        <p>Arrastra los pasos al orden correcto:</p>
-        <div id="dropzone" class="dropzone"></div>
-        <button id="btn-check-order" onclick="checkOrder()">Verificar</button>
-        <p id="orderResult"></p>
+        <div class="option" onclick="checkAnswer(this, 0)">A) $$\ 0.357 [\frac{m}{s} ]$$</div>
+        <div class="option" onclick="checkAnswer(this, 1)">B)$$ \ 0.357 [\frac{mm}{Rev} ]$$</div>
+        <div class="option" onclick="checkAnswer(this, 2)">C) $$ \ 2.8012 [\frac{m}{s} ]$$</div>
+        <div class="option" onclick="checkAnswer(this, 3)">D) <b>ninguna de las anteriores</b></div>
+
+        <div id="procedure">
+            <b>La respuesta correcta es: $$ b) \ 0.357 [\frac{mm}{Rev} ]$$</b><br><br>
+            Datos<br>
+            <b>1)Material= Acero simple al carbón</b><br><br>
+            <b>2)275HB = Pu=2.8[W/(mm^3/s)] (conversión de unidades usando tablas)</b><br><br>
+            <b>3)vc= 200[m/min] = 3333.333 [mm/s]</b><br><br>
+            <b>4)d = 6[mm]</b><br><br>
+            <b>5)Ptorno= 25000 [W] con una eficiencia=80%, Ptorno= 20000[W]</b>
+            Sustituyendo valores:<br>
+            $$\ {\dot {\mathbf{V}}} = \frac{Pot}{Pu}; {\dot {\mathbf{V}}}=V_cfd $$<br>
+            <br>$$ \ \frac{Pot}{P_u} = V_c f d; f= \frac{Pot}{P_u V_c d} $$<br>
+            <br> $$\ f = \frac{20000[W]}{2.8 [\frac{w}{(mm/s)}](3333.33 [\frac{mm}{s})](6[mm])} $$<br>
+            <br> $$\f= 0.357 [\frac{mm}{rev}] $$ 
+            
+        </div>
     </div>
-
-    </details>
+</details>
 </div>
 
-
-
+</div> 
 <!-- FUENTES -->
 <div class="indice"> 
     <h2 id="fuentes">10. Fuentes de consulta</h2>
     <ul>
-        <li>Boizas, G. M. (s. f.-b). Fabricación Aditiva - Cómo y Porqué de la Impresión 3D. http://fabricacionaditiva.online/</li>
-        <li>Gibson, Rosen & Stucker. "Additive Manufacturing Technologies". Springer.</li>
-        <li>ASTM F2792 – Standard Terminology for Additive Manufacturing</li>
+        <li>Groover Fundamentos De Manufactura Moderna 3edi : Free Download, Borrow, and Streaming : Internet Archive. (2018, 1 agosto). Internet Archive. https://archive.org/details/GrooverFundamentosDeManufacturaModerna3edi</li>
+        <li>Balderas, J. Manufactura II-compendio. Faculta de Ingeniería/li>
+        <li>Flores.I(2024). Apuntes Manufactura. Facultad de Ingeniería</li>
+        <li>Lee, K. (2025, 9 julio). Qué es el torneado de contornos en una máquina de torno: Una guía completa. Chapa metálica Shengen. https://shengenfab.com/es/what-is-contour-turning/</li>
     </ul>
 
     </div>
 </div>
+
+
 
 </div> 
 
@@ -403,10 +656,9 @@ La impresión 3D en la industria aeroespacial se utiliza en diversas aplicacione
 // CAROUSEL PROCESO
 // ----------------------
 const procesos = [
-    ["Imagenes/modelocad.gif", "Creación del modelo CAD", "El primer paso común a un proceso de fabricación aditiva es generar un modelo de ordenador en 3D del producto que queremos obtener. Existen actualmente múltiples sistemas de diseño de piezas en 3D, si bien de forma general podemos considerar 3 tipos:Herramientas de CAD / Modelado de Sólidos, Herramientas de Escultura 3D y Modelado de superficie / malla 3D."],
-    ["Imagenes/slicing.gif", "Slicing", "Una vez tenemos el modelo 3D en un formato adecuado, la siguiente fase es establecer las capas que, una a una, van a construir el producto final; esto se hace cortando (rebanando) el modelo en trozos superpuestos muy finos uno sobre otro. Podría parecer que esta fase es algo trivial o estándar; al fin y al cabo, se trata simplemente de cortar por planos horizontales paralelos un objeto conocido. Sin embargo, no es así: esta fase es la que define exactamente en qué forma nuestra máquina va a generar el producto; vamos a traducir un modelo de ordenador a órdenes de la máquina para, trocito a trocito, fabricar un objeto."],
-    ["Imagenes/Impresion3d.gif", "Impresión", "Se trata de la impresión propiamente dicha. En esta fase nuestra máquina de fabricación aditiva, nuestra impresora 3D, ejecutará los comandos para construir el rebanado definido en la fase anterior, capa a capa. Lógicamente, esta fase es totalmente dependiente de la tecnología de fabricación 3D seleccionada. Más adelante veremos un resumen de las principales tecnologías, si bien en este momento merece la pena mencionar el código g-code, por ser este el formato más extendido de instrucciones para una impresora 3D. Cada orden en código g-code indica a la impresora la acción detallada que tiene que hacer (ir a la posición XYZ del espacio, depositar un poco de material en esa posición, etc…)."],
-    ["Imagenes/postprocesado.gif", "Postproceso", "En ocasiones, el producto tal y como lo hemos extraído de nuestra máquina de impresión 3D no será suficiente para cumplir con las necesidades finales. Así, dependiendo de la tecnología empleada, en esta fase pueden aparecer trabajos adicionales como: Lijado, Lavado en agua o diferentes disolventes, Eliminación de soportes, Secado, Pintado, Cromado, Vaporizado,  Inyección de material adicional / dopaje para dar mayor resistencia, Etc…"]
+    ["Imagenes/Torneado recto.jpg", "Torneado recto","El torneado recto es un proceso de mecanizado utilizado para reducir el diámetro de piezas cilíndricas a un tamaño específico. Este proceso implica el avance de la herramienta de corte en paralelo al eje de rotación de la pieza, produciendo secciones cilíndricas con acabados limpios y precisos. Se aplica comúnmente en la fabricación de ejes y pasadores, y es utilizado tanto en las etapas de desbaste como de acabado. Además, el torneado recto ayuda a mejorar la eficacia general al reducir residuos y repeticiones.",],
+    ["Imagenes/torneado ahusado.jpg", "Torneado ahusado","El torneado ahusado es un proceso de mecanizado que implica la eliminación de material de una pieza de trabajo en rotación mediante la herramienta de corte. Este proceso se utiliza para crear formas cónicas en las piezas, donde la herramienta avanza en un ángulo específico en relación al eje de rotación.",],
+    ["Imagenes/Torneado de contornos.jpg", "Torneado de contornos", "El torneado de contornos es un proceso de torno en el que la herramienta de corte se mueve en los ejes X y Z simultáneamente. Este movimiento multieje permite a la herramienta seguir una trayectoria curva o angular específica. El objetivo es crear formas suaves, como arcos, bordes redondeados o perfiles inclinados, en una pieza giratoria.",],
 ];
 let iProceso=0;
 
@@ -442,10 +694,10 @@ function prevApp(){ iApp=(iApp-1+apps.length)%apps.length; updateApp(); }
 // CAROUSEL Tecnologías Principales
 // ----------------------
 const Tec=[
-    ["Imagenes/FDM.gif","FDM (Fused Deposition Modeling)","Funde un filamento termoplástico y lo deposita capa por capa. Es el método más accesible y ampliamente usado para prototipos funcionales."],
-    ["Imagenes/sla.gif","SLA (Stereolithography)","Utiliza un láser UV para curar resina líquida. Destaca por su alta precisión y acabado superficial."],
-    ["Imagenes/sls.gif","SLS (Selective Laser Sintering)","Usa un láser para sinterizar polvo polimérico. Permite piezas fuertes sin necesidad de soportes."],
-    ["Imagenes/dmls.gif","DMLS / SLM","Es un proceso de fabricación aditiva que utiliza un láser para fusionar polvo metálico y crear piezas metálicas densas directamente a partir de modelos CAD."]
+    ["Imagenes/Perro de arrastre.png","Montado del trabajo entre centros usando un perro de arrastre"," Este método es apropiado para piezas que tienen una alta relación entre la longitud y el diámetro. En el centro del cabezal se fija una brida llamada perro o plato de arrastre, en la parte exterior  del  trabajo  que  se  usa  para  transmitir  la  rotación  del  husillo.  El  centro  del  contrapunto tiene una punta en forma de cono que se inserta en un agujero practicado en el extremo del trabajo. El centro del contrapunto puede ser un centro “vivo” o un centro “muerto”. Un centro vivo gira en un cojinete del contrapunto, de manera que no hay rotación relativa entre el trabajo y el centro vivo y por tanto no hay fricción. En contraste, un centro muerto está fijo en el contrapunto y no gira; la pieza de trabajo gira alrededor de la punta. Debido a la fricción y a la acumulación del calor que resulta, esta disposición se usa normalmente a menores velocidades de rotación. El centro vivo se puede usar a altas velocidades.",],
+    ["Imagenes/tres mordazas.png","Mandril de tres mordazas", "tiene varios diseños, con tres o cuatro mordazas para soste-ner la pieza cilíndrica sobre su diámetro exterior. Las mordazas se diseñan frecuentemente para sostener también el diámetro interior de una pieza tubular. Un mandril autocentrantetiene un mecanismo que mueve simultáneamente las mordazas hacia dentro o hacia fuera, y  de  esta  forma  centra  el  trabajo  en  el  eje  del  husillo.  Otros  mandriles  permiten  la  ope-ración independiente de cada mordaza. Los mandriles se pueden usar con o sin el centro del contrapunto. Para piezas con baja relación entre la longitud y el diámetro, la sujeción de la pieza al mandril en forma empotrada (en voladizo) es por lo general suficiente para soportar las fuerzas de corte. Para barras largas de trabajo se necesita el soporte del contrapunto."],
+    ["Imagenes/boquilla.png"," Boquilla ", "consiste en un buje tubular con hendiduras longitudinales que corren sobre la mitad de su longitud e igualmente espaciadas alrededor de su circunferencia, como se muestra en la figura. El diámetro interior de la boquilla se usa para sostener tra-bajos de forma cilíndrica como barras. Debido a las hendiduras, un extremo de la boquilla puede apretarse para reducir su diámetro y suministrar una presión de agarre segura sobre el trabajo. Como hay un límite en la reducción que se puede obtener en una boquilla de cualquier diámetro, estos dispositivos de sujeción del trabajo se deben hacer en varias me-didas para igualar el tamaño particular de la pieza de trabajo.",],
+    ["Imagenes/plato.png","Plato de sujeción para piezas de trabajo no cilíndricas.", "es un dispositivo para sujetar el trabajo que se fija al husillo del torno y se usa para sostener piezas con formas irregulares. Debido a su forma  irregular,  estas  piezas  no  se  pueden  sostener  por  otros  métodos  de  sujeción.  Por  tanto, el plato está equipado con mordazas diseñadas a la medida de la forma particular de la pieza.",],
 ];
 let iTec=0;
 
@@ -462,16 +714,16 @@ function prevTec(){ iTec=(iTec-1+Tec.length)%Tec.length; updateTec(); }
 // CUESTIONARIO
 // ----------------------
 const preguntas = [
-    {p:"¿Qué es la manufactura aditiva?", o:["Agregar material capa por capa","Remover material","Fundir arena"], r:0},
-    {p:"Archivo común para impresión 3D:", o:[".STL",".DOC",".MP3"], r:0},
-    {p:"¿Cuál es un proceso de post-proceso?", o:["Lijado","Torneado","Forjado"], r:0},
-    {p:"Tecnología FDM usa:", o:["Filamento","Polvo metálico","Resina"], r:0},
-    {p:"La manufactura aditiva permite:", o:["Geometrías complejas","Sólo piezas simples","Solo metales"], r:0},
-    {p:"Proceso previo a imprimir:", o:["Slicing","Fundición","Temple"], r:0},
-    {p:"Material común en SLS:", o:["Polvo","Filamento","Madera"], r:0},
-    {p:"Ventaja clave:", o:["Personalización","Alto desperdicio","Proceso lento"], r:0},
-    {p:"Aplicación típica:", o:["Prótesis","Textiles","Cerámica artesanal"], r:0},
-    {p:"La impresión 3D es:", o:["Aditiva","Sustractiva","Híbrida"], r:0}
+    {p:"¿Qué es el proceso de torneado?", o:["Un proceso donde una herramienta elimina material de una pieza cilíndrica en rotaciónUn proceso donde se funde el metal para darle forma","Un proceso exclusivo para hacer roscas","Fundir arena"], r:1},
+    {p:"En el torneado recto, la herramienta avanza:", o:["En forma circular ","De manera perpendicular al eje ","Paralela al eje de rotación "], r:2},
+    {p:" ¿Cuál es la ecuación que relaciona la velocidad de rotación con la velocidad de corte?", o:["Tm​= L/fr ","Df=D0-2d ","N= v/(πD0​v) "], r:2},
+    {p:"La operación donde la herramienta avanza radialmente sobre el extremo del trabajo para crear una superficie plana se llama: ", o:["Torneado de formas","Taladrado","Careado"], r:2},
+    {p:" ¿Qué operación consiste en avanzar la herramienta a lo largo de la pieza creando cuerdas roscadas?", o:["Tronzado","Roscado","Achaflanado"], r:1},
+    {p:"¿Cuál de las siguientes NO es una operación de corte? ", o:["Moleteado","Taladrado ","Torneado "], r:0},
+    {p:"En el torno mecánico, el componente que mueve el husillo es:", o:["El carro transversal ","El cabeza ","El contrapunto "], r:1},
+    {p:"El carro transversal permite que la herramienta avance:", o:["Paralela al eje del husillo ","Perpendicular al movimiento del carro principal","En diagonal"], r:1},
+    {p:"¿Qué limita el tamaño máximo de la pieza que puede girar en el torno? ", o:["La longitud del carro","El volteo","El paso del tornillo guía"], r:1},
+    {p:"¿Qué método de sujeción es ideal para piezas largas y delgadas (alta relación L/D)? ", o:["Sujeción con plato de tres mordazas","Sujeción magnética","Montado entre centros con perro de arrastre"], r:2}
 ];
 
 function loadQuiz(){
@@ -499,131 +751,50 @@ function checkQuiz(){
 }
 
 
-// ----------------------
-// EJERCICIO ORDENAR
-// ----------------------
-const pasosCorrectos = [
-    "Diseño CAD",
-    "Slicing",
-    "Impresión 3D",
-    "Post-procesado"
-];
 
-function loadOrderExercise(){
-    let shuffled=[...pasosCorrectos].sort(()=>Math.random()-0.5);
+    //Ecuaciones//
+    window.MathJax = {
+    tex: {
+    inlineMath: [["$", "$"], ["\\(", "\\)"]],
+    displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+    }
+    };
 
-    const dropzone=document.getElementById("dropzone");
-    dropzone.innerHTML="";
+    const btn = document.getElementById("btnToggle");
+const contenedor = document.getElementById("contenedorTabla");
 
-    shuffled.forEach(txt=>{
-        let div=document.createElement("div");
-        div.className="draggable";
-        div.draggable=true;
-        div.textContent=txt;
+btn.addEventListener("click", () => {
+    contenedor.classList.toggle("abierto");
 
-        div.addEventListener("dragstart", e=>{
-            e.dataTransfer.setData("text", txt);
-        });
+    if (contenedor.classList.contains("abierto")) {
+        btn.textContent = "Ocultar tabla";
+    } else {
+        btn.textContent = "Mostrar tabla";
+    }
+});
 
-        dropzone.appendChild(div);
+function checkAnswer(optionElement, index) {
+    const correctIndex = 1; // RESPUESTA CORRECTA = opción B
+    const questionBox = document.getElementById("questionBox");
+    const procedure = document.getElementById("procedure");
+
+    // Reiniciar colores
+    document.querySelectorAll(".option").forEach(opt => {
+        opt.classList.remove("correct", "incorrect");
     });
 
-    dropzone.addEventListener("dragover", e=>e.preventDefault());
-    dropzone.addEventListener("drop", e=>{
-        e.preventDefault();
-        let txt=e.dataTransfer.getData("text");
-
-        let dragged=[...dropzone.children].find(d=>d.textContent===txt);
-        if(dragged) dropzone.appendChild(dragged);
-    });
-}
-
-loadOrderExercise();
-
-function checkOrder() {
-    const dropzone = document.getElementById("dropzone");
-    const items = [...dropzone.children].map(i => i.textContent.trim());
-
-    let ok = JSON.stringify(items) === JSON.stringify(pasosCorrectos);
-
-    const result = document.getElementById("orderResult");
-    result.textContent = ok ? "✔ ¡Correcto! El orden es adecuado." : "✘ Orden incorrecto. Intenta de nuevo.";
-
-    if (!ok) {
-        // Mezclar automáticamente cuando es incorrecto
-        setTimeout(() => {
-            mezclarBloques(dropzone);
-        }, 600);
+    // Verificar respuesta
+    if (index === correctIndex) {
+        optionElement.classList.add("correct");
+        procedure.style.display = "none"; // No mostrar procedimiento si es correcta
     } else {
-        // Si es correcto → reiniciar el ejercicio
-        setTimeout(() => {
-            result.textContent = "Ejercicio reiniciado. Intenta de nuevo.";
-            mezclarBloques(dropzone);
-        }, 1200);
+        optionElement.classList.add("incorrect");
+        procedure.style.display = "block"; // Mostrar procedimiento si es incorrecta
     }
 }
-
-// Función para mezclar aleatoriamente los bloques
-function checkOrder() {
-    const dropzone = document.getElementById("dropzone");
-    const result = document.getElementById("orderResult");
-    const items = [...dropzone.children].map(i => i.textContent.trim());
-
-    const ok = JSON.stringify(items) === JSON.stringify(pasosCorrectos);
-
-    if (ok) {
-        // Mensaje correcto
-        result.textContent = "✔ ¡Correcto! El orden es adecuado.";
-        result.style.color = "#0a7a27";    // Verde
-        dropzone.style.border = "3px solid #0a7a27";
-        dropzone.style.background = "#e9ffe9";
-
-        // Reiniciar ejercicio
-        setTimeout(() => {
-            result.textContent = "Ejercicio reiniciado. Intenta de nuevo.";
-            result.style.color = "#003b5c"; // color normal
-            dropzone.style.border = "2px dashed #888";
-            dropzone.style.background = "white";
-            mezclarBloques(dropzone);
-        }, 1200);
-
-    } else {
-        // Mensaje incorrecto
-        result.textContent = "✘ Orden incorrecto. Intenta de nuevo.";
-        result.style.color = "#b00020";   // Rojo
-        dropzone.style.border = "3px solid #b00020";
-        dropzone.style.background = "#ffe5e5";
-
-        // Mezclar bloques tras un pequeño delay
-        setTimeout(() => {
-            result.style.color = "#003b5c"; // normal
-            dropzone.style.border = "2px dashed #888";
-            dropzone.style.background = "white";
-            mezclarBloques(dropzone);
-        }, 900);
-    }
-}
-
-
-
-const secciones = document.querySelectorAll("section[id]");
-        const links = document.querySelectorAll(".menu a");
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const id = entry.target.getAttribute("id");
-                if (entry.isIntersecting) {
-                    links.forEach(link => link.classList.remove("activo"));
-                    const actual = document.querySelector(`.menu a[href="#${id}"]`);
-                    if (actual) actual.classList.add("activo");
-                }
-            });
-        }, {
-            threshold: 0.45
-        });
-        secciones.forEach(sec => observer.observe(sec));
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 </body>
 </html>
-
