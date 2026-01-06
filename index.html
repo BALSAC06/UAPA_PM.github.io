@@ -714,13 +714,13 @@ function prevTec(){ iTec=(iTec-1+Tec.length)%Tec.length; updateTec(); }
 // CUESTIONARIO
 // ----------------------
 const preguntas = [
-    {p:"¿Qué es el proceso de torneado?", o:["Un proceso donde una herramienta elimina material de una pieza cilíndrica en rotaciónUn proceso donde se funde el metal para darle forma","Un proceso exclusivo para hacer roscas","Fundir arena"], r:1},
+    {p:"¿Qué es el proceso de torneado?", o:["Un proceso donde una herramienta elimina material de una pieza cilíndrica en rotaciónUn proceso donde se funde el metal para darle forma","Un proceso exclusivo para hacer roscas","Fundir arena"], r:0},
     {p:"En el torneado recto, la herramienta avanza:", o:["En forma circular ","De manera perpendicular al eje ","Paralela al eje de rotación "], r:2},
     {p:" ¿Cuál es la ecuación que relaciona la velocidad de rotación con la velocidad de corte?", o:["Tm​= L/fr ","Df=D0-2d ","N= v/(πD0​v) "], r:2},
     {p:"La operación donde la herramienta avanza radialmente sobre el extremo del trabajo para crear una superficie plana se llama: ", o:["Torneado de formas","Taladrado","Careado"], r:2},
     {p:" ¿Qué operación consiste en avanzar la herramienta a lo largo de la pieza creando cuerdas roscadas?", o:["Tronzado","Roscado","Achaflanado"], r:1},
     {p:"¿Cuál de las siguientes NO es una operación de corte? ", o:["Moleteado","Taladrado ","Torneado "], r:0},
-    {p:"En el torno mecánico, el componente que mueve el husillo es:", o:["El carro transversal ","El cabeza ","El contrapunto "], r:1},
+    {p:"En el torno mecánico, el componente que mueve el husillo es:", o:["El carro transversal ","El cabezal ","El contrapunto "], r:1},
     {p:"El carro transversal permite que la herramienta avance:", o:["Paralela al eje del husillo ","Perpendicular al movimiento del carro principal","En diagonal"], r:1},
     {p:"¿Qué limita el tamaño máximo de la pieza que puede girar en el torno? ", o:["La longitud del carro","El volteo","El paso del tornillo guía"], r:1},
     {p:"¿Qué método de sujeción es ideal para piezas largas y delgadas (alta relación L/D)? ", o:["Sujeción con plato de tres mordazas","Sujeción magnética","Montado entre centros con perro de arrastre"], r:2}
@@ -798,6 +798,7 @@ function checkAnswer(optionElement, index) {
 
 </body>
 </html>
+
 
 
 
